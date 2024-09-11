@@ -63,12 +63,26 @@ def rectangle(start, end):
 
 def triangle(start, end):
     """Draw triangle from start to end."""
-    pass  # TODO
+
+    up()
+    goto(start.x, start.y)
+    down()
+    
+    begin_fill()
+    x1, y1 = start.x, start.y
+    x2, y2 = end.x, start.y
+    x3, y3 = (start.x + end.x) / 2, end.y
+
+    
+    goto(x2, y2) 
+    goto(x3, y3)  
+    goto(x1, y1)  
+    end_fill() 
+
 
 
 def tap(x, y):
     """Store starting point or draw shape."""
-
     start = state['start']
 
     if start is None:
@@ -102,3 +116,4 @@ onkey(lambda: store('shape', circlef), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
+
